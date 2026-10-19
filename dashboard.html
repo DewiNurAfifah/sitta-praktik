@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard SITTA UT">
+  <title>Dashboard | SITTA UT</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="dashboard.html">
+        <img class="logo-img" src="assets/logo-ut.png" alt="Logo Universitas Terbuka">
+        <span class="brand-nama">SITTA - UT</span>
+      </a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="dashboard.html" aria-current="page">🏠 Dashboard</a></li>
+          <li><a href="stok.html">📦 Bahan Ajar</a></li>
+          <li><a href="tracking.html">🚚 Tracking</a></li>
+          <li><a href="#" id="btnLogout" class="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="greeting">
+      <h1 id="greeting">Selamat datang</h1>
+      <p class="muted" id="infoUser"></p>
+      <p class="muted" id="tanggalHariIni"></p>
+    </section>
+
+    <div class="layout-dashboard">
+      <aside class="card" aria-labelledby="judul-menu">
+        <h2 id="judul-menu">Menu Navigasi</h2>
+        <ul class="menu-samping">
+          <li><a class="side-item" href="stok.html">📚 Informasi Bahan Ajar</a></li>
+          <li><a class="side-item" href="tracking.html">🚚 Tracking Pengiriman</a></li>
+          <li>
+            <details class="side-item">
+              <summary>📊 Laporan</summary>
+              <div class="sub-menu">
+                <button type="button" class="side-item" id="btnMonitoring">Monitoring Progress DO Bahan Ajar</button>
+                <button type="button" class="side-item" id="btnRekap">Rekap Bahan Ajar</button>
+              </div>
+            </details>
+          </li>
+          <li><button type="button" class="side-item" id="btnHistori">🧾 Histori Transaksi Bahan Ajar</button></li>
+        </ul>
+      </aside>
+
+      <section class="card" aria-labelledby="judul-ringkasan">
+        <h2 id="judul-ringkasan">Ringkasan Sistem</h2>
+        <div class="grid-stat">
+          <div class="stat"><strong id="statStok">0</strong> Total Stok Bahan Ajar</div>
+          <div class="stat"><strong id="statKirim">0</strong> Dalam Pengiriman</div>
+          <div class="stat"><strong id="statJenis">0</strong> Judul Bahan Ajar</div>
+          <div class="stat"><strong id="statDO">0</strong> Total Delivery Order</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- MODAL: Monitoring Progress DO -->
+  <div class="modal modal-lebar" id="modalMonitoring" role="dialog" aria-modal="true" aria-labelledby="jdl-monitoring" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-tutup" data-tutup aria-label="Tutup">&times;</button>
+      <h2 id="jdl-monitoring">Monitoring Progress DO Bahan Ajar</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>No. DO</th><th>Nama</th><th>Ekspedisi</th><th>Status</th><th>Progress</th></tr></thead>
+          <tbody id="tbMonitoring"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Rekap Bahan Ajar -->
+  <div class="modal modal-lebar" id="modalRekap" role="dialog" aria-modal="true" aria-labelledby="jdl-rekap" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-tutup" data-tutup aria-label="Tutup">&times;</button>
+      <h2 id="jdl-rekap">Rekap Bahan Ajar</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Kode</th><th>Nama Barang</th><th>Jenis</th><th>Edisi</th><th>Stok</th><th>Status</th></tr></thead>
+          <tbody id="tbRekap"></tbody>
+          <tfoot><tr><th colspan="4">Total</th><th id="rekapTotal">0</th><th></th></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Histori Transaksi -->
+  <div class="modal modal-lebar" id="modalHistori" role="dialog" aria-modal="true" aria-labelledby="jdl-histori" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-tutup" data-tutup aria-label="Tutup">&times;</button>
+      <h2 id="jdl-histori">Histori Transaksi Bahan Ajar</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tanggal</th><th>No. DO</th><th>Pemesan</th><th>Bahan Ajar</th><th>Total</th></tr></thead>
+          <tbody id="tbHistori"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer"><div class="container">SITTA UT - Tugas Praktik 1 STSI4209 Pemrograman Berbasis Web</div></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

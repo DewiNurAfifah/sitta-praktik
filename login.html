@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login SITTA - Sistem Informasi Tiras dan Transaksi Bahan Ajar Universitas Terbuka">
+  <title>Login | SITTA UT</title>
+
+  <!-- CSS EXTERNAL -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- CSS INTERNAL: khusus latar halaman login -->
+  <style>
+    /* latar halaman login: gradasi biru langit */
+    body { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); }
+  </style>
+</head>
+<body class="login-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <img class="logo-img" src="assets/logo-ut.png" alt="Logo Universitas Terbuka">
+      <span class="brand-nama">SITTA - UT</span>
+      <!-- CSS INLINE -->
+      <p class="tagline" style="margin-left:auto">Sistem Informasi Tiras &amp; Transaksi Bahan Ajar Universitas Terbuka</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+    <section class="card" aria-labelledby="judul-login">
+      <h1 id="judul-login">Login Pengguna</h1>
+
+      <form id="formLogin" novalidate>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nama@ut.ac.id" autocomplete="username">
+          <span class="error" id="err-email" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-aksi">
+            <input type="password" id="password" name="password" placeholder="Masukkan password" autocomplete="current-password">
+            <button type="button" class="btn btn-garis" id="btnLihat" aria-label="Tampilkan password">Lihat</button>
+          </div>
+          <span class="error" id="err-password" role="alert"></span>
+        </div>
+
+        <div class="aksi-tengah">
+          <button type="submit" class="btn">Login</button>
+          <button type="button" class="btn btn-garis" id="btnDaftar">Daftar</button>
+          <button type="button" class="btn btn-garis" id="btnLupa">Lupa Password</button>
+        </div>
+      </form>
+
+      <p class="demo">Gunakan akun demo: <strong>rina@ut.ac.id / rina123</strong> (atau akun lain di <code>js/data.js</code>)</p>
+    </section>
+    </div>
+  </main>
+
+  <!-- MODAL: LUPA PASSWORD -->
+  <div class="modal" id="modalLupa" role="dialog" aria-modal="true" aria-labelledby="judul-lupa" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-tutup" data-tutup aria-label="Tutup">&times;</button>
+      <h2 id="judul-lupa">Lupa Password</h2>
+      <p class="muted">Masukkan email terdaftar. Instruksi reset akan dikirim (simulasi).</p>
+      <form id="formLupa" novalidate>
+        <div class="form-group">
+          <label for="lupaEmail">Email terdaftar</label>
+          <input type="email" id="lupaEmail" placeholder="nama@ut.ac.id">
+          <span class="error" id="err-lupaEmail" role="alert"></span>
+        </div>
+        <button type="submit" class="btn">Kirim Instruksi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: DAFTAR -->
+  <div class="modal" id="modalDaftar" role="dialog" aria-modal="true" aria-labelledby="judul-daftar" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-tutup" data-tutup aria-label="Tutup">&times;</button>
+      <h2 id="judul-daftar">Daftar Akun Baru</h2>
+      <form id="formDaftar" novalidate>
+        <div class="form-group">
+          <label for="regNama">Nama lengkap</label>
+          <input type="text" id="regNama" placeholder="Nama sesuai identitas">
+          <span class="error" id="err-regNama" role="alert"></span>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" placeholder="nama@ut.ac.id">
+          <span class="error" id="err-regEmail" role="alert"></span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regRole">Peran</label>
+            <select id="regRole">
+              <option value="">-- Pilih peran --</option>
+              <option value="UPBJJ-UT">UPBJJ-UT</option>
+              <option value="Puslaba">Puslaba</option>
+              <option value="Fakultas">Fakultas</option>
+            </select>
+            <span class="error" id="err-regRole" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="regLokasi">Lokasi</label>
+            <input type="text" id="regLokasi" placeholder="mis. UPBJJ Bandung">
+            <span class="error" id="err-regLokasi" role="alert"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" placeholder="Minimal 6 karakter">
+            <span class="error" id="err-regPassword" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="regKonfirmasi">Ulangi password</label>
+            <input type="password" id="regKonfirmasi" placeholder="Ketik ulang">
+            <span class="error" id="err-regKonfirmasi" role="alert"></span>
+          </div>
+        </div>
+        <button type="submit" class="btn">Daftar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

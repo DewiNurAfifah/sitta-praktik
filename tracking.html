@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tracking pengiriman bahan ajar SITTA UT berdasarkan nomor Delivery Order">
+  <title>Tracking Pengiriman | SITTA UT</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="dashboard.html">
+        <img class="logo-img" src="assets/logo-ut.png" alt="Logo Universitas Terbuka">
+        <span class="brand-nama">SITTA - UT</span>
+      </a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="dashboard.html">🏠 Dashboard</a></li>
+          <li><a href="stok.html">📦 Bahan Ajar</a></li>
+          <li><a href="tracking.html" aria-current="page">🚚 Tracking</a></li>
+          <li><a href="#" id="btnLogout" class="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="greeting">
+      <h1 id="greeting">Tracking Pengiriman</h1>
+      <p class="muted" id="infoUser"></p>
+    </section>
+
+    <section class="card" aria-labelledby="judul-cari">
+      <h2 id="judul-cari" class="judul-tengah">Cari Delivery Order</h2>
+      <form id="formTracking" novalidate>
+        <div class="form-group">
+          <label for="nomorDO">Nomor Delivery Order</label>
+          <div class="input-aksi">
+            <input type="text" id="nomorDO" inputmode="numeric" placeholder="Contoh: 2023001234" autocomplete="off">
+            <button type="submit" class="btn">Cari</button>
+          </div>
+          <span class="error" id="err-nomorDO" role="alert"></span>
+        </div>
+        <p class="muted">Coba nomor contoh:
+          <button type="button" class="chip" data-do="2023001234">2023001234</button>
+          <button type="button" class="chip" data-do="2023005678">2023005678</button>
+        </p>
+      </form>
+    </section>
+
+    <section class="card" id="hasil" aria-labelledby="judul-hasil" aria-live="polite" hidden>
+      <h2 id="judul-hasil">Hasil Pelacakan</h2>
+
+      <dl class="detail">
+        <div><dt>Nomor DO</dt><dd id="hNomor"></dd></div>
+        <div><dt>Nama Mahasiswa</dt><dd id="hNama"></dd></div>
+        <div><dt>Status Pengiriman</dt><dd><span class="badge" id="hStatus"></span></dd></div>
+        <div><dt>Ekspedisi</dt><dd id="hEkspedisi"></dd></div>
+        <div><dt>Tanggal Kirim</dt><dd id="hTanggal"></dd></div>
+        <div><dt>Jenis Paket</dt><dd id="hPaket"></dd></div>
+        <div><dt>Total Pembayaran</dt><dd id="hTotal"></dd></div>
+      </dl>
+
+      <p><strong>Progress pengiriman</strong></p>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="trackProgress">
+        <div class="progress-bar" id="hBar">0%</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem">Riwayat Perjalanan</h3>
+      <ol class="timeline" id="hPerjalanan"></ol>
+    </section>
+    <section class="kotak-ringkasan" aria-labelledby="judul-ringkasan">
+      <h2 id="judul-ringkasan">Ringkasan Status Pengiriman</h2>
+      <p id="sTotal">Total DO: 0</p>
+      <p id="sKirim">Dalam Pengiriman: 0</p>
+      <p id="sSelesai">Selesai Diantar: 0</p>
+    </section>
+
+    <section aria-labelledby="judul-semua">
+      <h2 id="judul-semua" class="sr-only">Daftar semua Delivery Order</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">Daftar Delivery Order</caption>
+          <thead>
+            <tr>
+              <th scope="col">No. DO</th><th scope="col">Nama Pemesan</th><th scope="col">Status</th>
+              <th scope="col">Progress</th><th scope="col">Ekspedisi</th><th scope="col">Tanggal Kirim</th>
+              <th scope="col">Jenis Paket</th><th scope="col">Total Bayar</th>
+            </tr>
+          </thead>
+          <tbody id="tbSemuaDO"></tbody>
+        </table>
+      </div>
+      <p class="muted">Klik salah satu baris untuk melihat detail perjalanan.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">SITTA UT - Tugas Praktik 1 STSI4209 Pemrograman Berbasis Web</div></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>
